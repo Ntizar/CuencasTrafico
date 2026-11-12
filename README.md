@@ -66,6 +66,18 @@ Un solo fichero HTML, sin dependencias ni build. Dentro:
   <img src="docs/preview-cuencas.png" alt="Cuencas viales: las ciudades más grandes se reparten España" width="720">
 </p>
 
+## Versión urbana
+
+[`/urbano/`](urbano/) es el hermano a escala de calle: el mismo árbol de rutas, pero
+dentro de una ciudad, con sus distritos y sus hitos. Siete ciudades (Madrid, Barcelona,
+Valencia, Sevilla, Zaragoza, Málaga y Murcia), cada una con su encuadre.
+
+**[▶ Abrir la versión urbana](https://ntizar.github.io/CuencasTrafico/urbano/)**
+
+El generador está en [`urbano/scripts/`](urbano/scripts/): descarga la red de
+OpenStreetMap, la convierte en grafo de cruces y enlaces y la empaqueta en el binario
+que consume el HTML. Detalles en [`urbano/README.md`](urbano/README.md).
+
 ## Créditos
 
 - **Idea original:** *«All Roads Lead to Richmond»*, Arterial Mapping ([@ArterialMapping](https://arterialmapping.wordpress.com/2022/03/20/all-roads-lead-to-richmond-2/)).
