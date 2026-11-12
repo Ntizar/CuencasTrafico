@@ -1443,7 +1443,9 @@ function useUrban(slug) {
   S.ucity = ds.slug;
   routedKey = ""; noICost = null;
   const saved = S.uref[ds.slug];
-  const mk = saved != null ? ds.marks[saved] : ds.marks[0];
+  const mkIdx = saved != null && saved >= 0 && ds.marks[saved] ? saved : 0;
+  const mk = ds.marks[mkIdx];
+  S.uref[ds.slug] = mkIdx;
   S.dest = mk.j; S.destLabel = mk.name; S.destState = -1;
   drawUrbanChips();
 }
@@ -1503,7 +1505,7 @@ function drawUrbanText(ctx, st, F, FM, padX, footer) {
   const lead = S.mode === "dist" ? "Las calles más cercanas en distancia a" : "Las calles que llegan antes a";
   ctx.font = `300 30px ${F}`; ctx.fillText(lead, padX, 62);
   const bigTitle = S.destLabel || CUR.name;
-  const halfLine = `La mitad de la calle está a menos de ${fmtDur(R.half)}`;
+  const halfLine = `La mitad de las calles está a menos de ${fmtDur(R.half)}`;
   ctx.font = `600 15px ${FM}`;
   const reserve = Math.max(520, ctx.measureText(halfLine).width + 60);
   let tsize = 58; ctx.font = `800 ${tsize}px ${F}`;
