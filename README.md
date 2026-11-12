@@ -93,3 +93,17 @@ que consume el HTML. Detalles en [`urbano/README.md`](urbano/README.md).
 ---
 
 Hecho con ❤️ por David Antizar
+
+## Modo «calle a calle» (siete ciudades)
+
+La app nacional incluye un quinto modo: el mismo árbol de rutas, a escala de calle,
+con siete ciudades (Madrid, Barcelona, Málaga, Murcia, Sevilla, Valencia, Zaragoza).
+Comparte cargador, cálculo, dibujo, estilos y póster con el resto de modos; sólo
+cambia el conjunto de datos activo.
+
+- `scripts/to_national.py` (en `CuencasUrbanas`) reescribe cada ciudad al esquema de
+  datos nacional (`jx/jy` escalados con `Q`, `lt` en minutos, `lk` en metros,
+  geometría en deltas) y las empaqueta en un único binario gzip+base64.
+- `tools/integrate_urban.py` inyecta ese binario en `index.html` y aplica las
+  ediciones del modo urbano (idempotente).
+- Enlace directo: `#urbano-madrid`, `#urbano-barcelona`, … cambia la ciudad.
