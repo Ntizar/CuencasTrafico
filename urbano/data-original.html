@@ -277,9 +277,10 @@ const S = { city: "madrid", kind: "one", dest: null, destLabel: "", seedsOn: nul
 let CC = null, R = null, routedKey = "";
 
 function fmtDur(min) {
-  if (min < 60) return `${Math.round(min)} min`;
-  const h = Math.floor(min / 60), m = Math.round(min % 60);
-  return m ? `${h} h ${m} min` : `${h} h`;
+  const q = Math.max(5, Math.ceil(min / 5) * 5); // tramos de 5 min (hacia arriba: no promete menos de lo real)
+  if (q < 60) return `${q} min`;
+  const h = Math.floor(q / 60), m = q % 60;
+  return m ? `${h} h ${String(m).padStart(2, "0")} min` : `${h} h`;
 }
 function fmtKm(km) { return km >= 100 ? `${Math.round(km)} km` : `${km.toFixed(1).replace(".", ",")} km`; }
 
